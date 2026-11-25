@@ -20,25 +20,25 @@ Implement a standalone TypeScript arithmetic (byte-wise range) coder module unde
   - Confirm TypeScript compiles cleanly (`tsc --noEmit`)
   - _Requirements: 1.3, 3.1, 3.2, 4.1, 5.1, 5.3_
 
-- [ ] 2. Implement `validate.ts` and `cumulative.ts`
-  - [ ] 2.1 Implement `validateFrequencyTable` in `validate.ts`
+- [x] 2. Implement `validate.ts` and `cumulative.ts`
+  - [x] 2.1 Implement `validateFrequencyTable` in `validate.ts`
     - Checks `table.length === alphabetSize`; throws `"FrequencyTable length is <actual>, expected <alphabetSize>"`
     - Checks every entry ≥ 1; throws `"FrequencyTable entry at index <i> is <value>; must be ≥ 1"`
     - Checks sum equals `FREQUENCY_TOTAL`; throws `"FrequencyTable sum is <actual>, expected 16777216 (2^24)"`
     - Accepts `Uint32Array | number[]`
     - _Requirements: 1.4, 1.5, 4.1, 4.2, 4.3, 4.4_
 
-  - [ ] 2.2 Implement `buildCumulativeTable` in `cumulative.ts`
+  - [x] 2.2 Implement `buildCumulativeTable` in `cumulative.ts`
     - Accepts `freq: FrequencyTable` and a pre-allocated `buffer: Uint32Array` of length `alphabetSize + 1`
     - Single-pass: validates each entry ≥ 1 while accumulating; checks final sum equals `FREQUENCY_TOTAL`
     - `buffer[0] = 0`, `buffer[i] = freq[0]+…+freq[i-1]`, `buffer[alphabetSize] = FREQUENCY_TOTAL`
     - _Requirements: 1.3, 4.2, 4.3_
 
-  - [ ] 2.3 Implement `findSymbol` in `cumulative.ts`
+  - [x] 2.3 Implement `findSymbol` in `cumulative.ts`
     - Binary search returning `s` such that `cumTable[s] <= value < cumTable[s+1]`
     - _Requirements: 2.1_
 
-  - [ ] 2.4 Write unit tests for `validateFrequencyTable` in `validate.test.ts`
+  - [x] 2.4 Write unit tests for `validateFrequencyTable` in `validate.test.ts`
     - Wrong length (too short, too long)
     - Zero-frequency entry at index 0 and at a mid-table index
     - Sum too low, sum too high, sum off by 1
